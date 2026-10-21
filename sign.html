@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>联署与建议 · “快”科研联合声明 · Sign &amp; Suggest</title>
+  <meta name="description" content="联署《“快”科研联合声明》或提出修改建议 / Sign the Joint Statement on Quick Research or suggest revisions.">
+  <meta name="theme-color" content="#f5f1ea">
+  <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="static/style.css">
+  <script src="static/sign.js" defer></script>
+</head>
+<body>
+  <div class="site">
+    <header class="masthead">
+      <div class="topbar">
+        <a class="brand" href="./">
+          <span class="brand-mark">“快”科研联合声明</span>
+          <span class="brand-sub">Quick Research</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="./#statement">声明 Statement</a>
+          <a href="./#list">名单 Signatories</a>
+          <a href="sign.html?mode=suggest">建议 Suggest</a>
+          <a class="nav-cta" href="sign.html">联署 Sign</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="form-shell" aria-labelledby="sign-title">
+        <h1 id="sign-title">联署与建议 <span class="title-en">Sign &amp; Suggest</span></h1>
+        <p class="lede">
+          请确认已阅读<a href="./#statement">声明全文</a>。填写以下信息后，本页会为你生成一封邮件，请从你自己的邮箱发送至
+          <a href="mailto:kunlunz097@gmail.com">kunlunz097@gmail.com</a>。我们核实后会尽快在主页更新联署名单。
+        </p>
+        <p class="hint">
+          Please make sure you have read the full statement. Fill in the form and this page will compose an email for you to send from your own mailbox to kunlunz097@gmail.com. Once it is verified, your name will be added to the list on the homepage.
+        </p>
+
+        <div class="notes">
+          <p class="notes-title">联署须知 <span class="title-en">Before you sign</span></p>
+          <ul>
+            <li>
+              <strong>谁可以联署</strong>
+              认同本声明的学生、导师与科研工作者，不限领域与身份；也欢迎只提出修改建议。
+              <span>Students, supervisors, and researchers in any field who share these views. You are also welcome to only suggest revisions.</span>
+            </li>
+            <li>
+              <strong>信息如何使用</strong>
+              本页不收集、不上传任何信息，邮件由你自己的邮箱发出；简历仅用于核实身份，不会公开；你也可以选择匿名联署。
+              <span>Nothing is collected by this page; the email goes out from your own mailbox. Your CV is used only for verification, and you can choose to sign anonymously.</span>
+            </li>
+            <li>
+              <strong>修改与撤回</strong>
+              如需更新信息或撤回联署，用同一邮箱来信告知即可。
+              <span>To update your entry or withdraw your signature, email us from the same address.</span>
+            </li>
+            <li>
+              <strong>修改建议</strong>
+              我们会认真阅读每一条建议，采纳的修改将体现在声明的新版本中。
+              <span>We read every suggestion; adopted changes appear in a new version of the statement.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="steps">
+          <div class="step active" data-step="1">1. 填写信息 Info</div>
+          <div class="step" data-step="2">2. 发送邮件 Send</div>
+        </div>
+
+        <form id="sign-form" data-version="v1.0">
+          <fieldset class="mode-switch">
+            <legend>我希望 I would like to</legend>
+            <div class="mode-options">
+              <label class="mode-option">
+                <input type="radio" name="mode" value="sign" checked>
+                <span>
+                  <strong>联署声明</strong>
+                  <small>Sign the statement (suggestions optional)</small>
+                </span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="mode" value="suggest">
+                <span>
+                  <strong>仅提出修改建议</strong>
+                  <small>Suggest revisions only</small>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="grid two">
+            <div>
+              <label for="name">姓名 Name <span class="req">*</span></label>
+              <input id="name" name="name" required maxlength="80" autocomplete="name">
+            </div>
+            <div>
+              <label for="institute">单位 Institute <span class="req">*</span></label>
+              <input id="institute" name="institute" required maxlength="160" autocomplete="organization" placeholder="例如 清华大学 / e.g. University of Illinois">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="position">
+              身份 / 职位 Position
+              <span class="req" data-show-in="sign">*</span>
+              <span class="optional" data-show-in="suggest" hidden>可选 optional</span>
+            </label>
+            <input id="position" name="position" required maxlength="80" list="position-options" placeholder="例如 博士生 / e.g. PhD Student, Assistant Professor">
+            <datalist id="position-options">
+              <option value="本科生 Undergraduate Student"></option>
+              <option value="硕士生 Master's Student"></option>
+              <option value="博士生 PhD Student"></option>
+              <option value="博士后 Postdoctoral Researcher"></option>
+              <option value="助理教授 Assistant Professor"></option>
+              <option value="副教授 Associate Professor"></option>
+              <option value="教授 Professor"></option>
+              <option value="研究员 Research Scientist"></option>
+              <option value="工程师 Engineer"></option>
+            </datalist>
+          </div>
+
+          <div class="field">
+            <label for="resume">
+              简历 Resume / CV
+              <span class="req" data-show-in="sign">*</span>
+              <span class="optional" data-show-in="suggest" hidden>可选 optional</span>
+            </label>
+            <textarea id="resume" name="resume" rows="3" required maxlength="2000" placeholder="个人主页、Google Scholar 或简历链接，也可以写一段简短的个人简介。Homepage, Google Scholar, or a link to your CV, or a short bio."></textarea>
+            <p class="hint">仅用于核实身份，不会公开；也可以在发送邮件时附上简历 PDF。Used only to verify your identity and never published. You can also attach a PDF to the email.</p>
+          </div>
+
+          <div class="field">
+            <label for="suggestions">
+              修改建议 Suggestions
+              <span class="req" data-show-in="suggest" hidden>*</span>
+              <span class="optional" data-show-in="sign">可选 optional</span>
+            </label>
+            <textarea id="suggestions" name="suggestions" rows="6" maxlength="6000" placeholder="可以指出具体的段落或措辞，也可以补充你认为遗漏的观点。Point to a specific passage or wording, or add a perspective you think is missing."></textarea>
+          </div>
+
+          <fieldset class="mode-switch" id="listing-row">
+            <legend>署名方式 How should we list you?</legend>
+            <div class="mode-options">
+              <label class="mode-option">
+                <input type="radio" name="listing" value="public" checked>
+                <span>
+                  <strong>公开署名</strong>
+                  <small>Show my name, position, and institute</small>
+                </span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="listing" value="anonymous">
+                <span>
+                  <strong>匿名联署</strong>
+                  <small>Count me without showing my name</small>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="checkbox" id="consent-row">
+            <input type="checkbox" id="consent" name="consent" required>
+            <span data-show-in-listing="public">
+              本人自愿联署，确认信息真实，并同意在主页公开姓名、身份与单位。
+              I sign voluntarily, confirm that the information is accurate, and agree to have my name, position, and institute listed on this website.
+            </span>
+            <span data-show-in-listing="anonymous" hidden>
+              本人自愿联署，确认信息真实；我选择匿名联署，主页只计入人数，不公开我的姓名与单位。
+              I sign voluntarily and confirm that the information is accurate. I choose to sign anonymously: I am counted, but my name and institute are not shown.
+            </span>
+          </label>
+
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">生成邮件 Compose email</button>
+            <a class="btn btn-ghost" href="./">返回声明 Back</a>
+          </div>
+        </form>
+
+        <section class="send-step" id="send-step" aria-labelledby="send-title" hidden>
+          <h2 id="send-title" tabindex="-1">最后一步：从你的邮箱发送 <span class="title-en">Last step: send it from your mailbox</span></h2>
+          <p class="hint">
+            建议使用机构邮箱发送，便于我们核实身份；如需附上简历 PDF，请在发送前添加附件。
+            An institutional address helps us verify your signature. To include a CV, attach it before sending.
+          </p>
+
+          <div class="mail-card">
+            <div class="mail-row">
+              <span class="mail-key">收件人 To</span>
+              <span class="mail-val" id="mail-to">kunlunz097@gmail.com</span>
+              <button class="copy-btn" type="button" data-copy="mail-to">复制 Copy</button>
+            </div>
+            <div class="mail-row">
+              <span class="mail-key">主题 Subject</span>
+              <span class="mail-val" id="mail-subject"></span>
+              <button class="copy-btn" type="button" data-copy="mail-subject">复制 Copy</button>
+            </div>
+            <div class="mail-row mail-row-body">
+              <span class="mail-key">正文 Body</span>
+              <button class="copy-btn" type="button" data-copy="mail-body">复制 Copy</button>
+              <pre class="mail-body" id="mail-body"></pre>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" id="send-mailto" href="mailto:kunlunz097@gmail.com">用邮件客户端发送 Mail app</a>
+            <a class="btn btn-ghost" id="send-gmail" href="https://mail.google.com/" target="_blank" rel="noopener noreferrer">用 Gmail 发送</a>
+            <a class="btn btn-ghost" id="send-outlook" href="https://outlook.office.com/" target="_blank" rel="noopener noreferrer">用 Outlook 发送</a>
+          </div>
+          <p class="hint" id="long-note" hidden>
+            正文较长，部分邮件客户端可能无法完整带入；如有缺失，请用“复制”按钮粘贴正文。
+            The message is long and some mail apps may cut it off; if so, paste the body with the Copy button.
+          </p>
+          <p class="hint">
+            如果以上按钮都无法打开邮箱，请复制收件人、主题与正文，在任意邮箱中手动发送。
+            If none of the buttons work, copy the address, subject, and body into any email client.
+          </p>
+          <div class="actions">
+            <button class="btn btn-ghost" type="button" id="edit-again">← 返回修改 Edit</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Joint Statement on Quick Research · “快”科研联合声明</p>
+      <p>
+        如有问题或建议，可邮件联系 /
+        For inquiries or suggestions, please email
+        <a href="mailto:kunlunz097@gmail.com">kunlunz097@gmail.com</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
