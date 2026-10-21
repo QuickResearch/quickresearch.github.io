@@ -994,70 +994,6 @@ textarea:focus {
 }
 .send-step h2:focus { outline: none; }
 
-.mail-card {
-  margin-top: 1.1rem;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #fff;
-}
-.mail-row {
-  display: grid;
-  grid-template-columns: 7.5rem minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.6rem 0.85rem;
-  padding: 0.75rem 0.9rem;
-  border-bottom: 1px solid var(--line);
-}
-.mail-row-body {
-  align-items: start;
-  border-bottom: 0;
-}
-.mail-row-body .copy-btn { grid-column: 3; }
-.mail-key {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-}
-.mail-val {
-  font-size: 0.92rem;
-  font-weight: 500;
-  overflow-wrap: anywhere;
-}
-.mail-body {
-  grid-column: 1 / -1;
-  max-height: 24rem;
-  margin: 0;
-  padding: 0.85rem 0.95rem;
-  overflow: auto;
-  border-radius: 10px;
-  background: var(--paper);
-  font-family: var(--sans);
-  font-size: 0.88rem;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-.copy-btn {
-  appearance: none;
-  padding: 0.3rem 0.75rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--sheet);
-  color: var(--ink-soft);
-  font: inherit;
-  font-size: 0.8rem;
-  font-weight: 600;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
-}
-.copy-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 /* —— Footer —— */
 .footer {
   width: min(var(--shell), calc(100% - var(--gutter)));
@@ -1103,10 +1039,6 @@ textarea:focus {
   .mode-options,
   .grid.two { grid-template-columns: 1fr; }
   .statement-doc .points li { padding-left: 1.85rem; }
-  .mail-row { grid-template-columns: minmax(0, 1fr) auto; }
-  .mail-row .mail-key { grid-column: 1 / -1; }
-  .mail-row-body .mail-key { grid-column: 1; }
-  .mail-row-body .copy-btn { grid-column: 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1115,4 +1047,23 @@ textarea:focus {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* —— Form submission —— */
+.botcheck { display: none !important; }
+
+.form-error {
+  margin: 1rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #efc0c0;
+  border-radius: 12px;
+  background: #fdf0f0;
+  color: #8f2f2f;
+  font-size: 0.9rem;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
 }

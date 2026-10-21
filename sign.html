@@ -35,11 +35,10 @@
       <section class="form-shell" aria-labelledby="sign-title">
         <h1 id="sign-title">联署与建议 <span class="title-en">Sign &amp; Suggest</span></h1>
         <p class="lede">
-          请确认已阅读<a href="./#statement">声明全文</a>。填写以下信息后，本页会为你生成一封邮件，请从你自己的邮箱发送至
-          <a href="mailto:kunlunz097@gmail.com">kunlunz097@gmail.com</a>。我们核实后会尽快在主页更新联署名单。
+          请确认已阅读<a href="./#statement">声明全文</a>。填写以下信息并提交，内容会直接发送给声明发起人；我们核实后会尽快在主页更新联署名单。
         </p>
         <p class="hint">
-          Please make sure you have read the full statement. Fill in the form and this page will compose an email for you to send from your own mailbox to kunlunz097@gmail.com. Once it is verified, your name will be added to the list on the homepage.
+          Please make sure you have read the full statement. Submit the form below and it goes straight to the organizers. Once your signature is verified, your name will be added to the list on the homepage.
         </p>
 
         <div class="notes">
@@ -52,13 +51,13 @@
             </li>
             <li>
               <strong>信息如何使用</strong>
-              本页不收集、不上传任何信息，邮件由你自己的邮箱发出；简历仅用于核实身份，不会公开；你也可以选择匿名联署。
-              <span>Nothing is collected by this page; the email goes out from your own mailbox. Your CV is used only for verification, and you can choose to sign anonymously.</span>
+              表单内容经 Web3Forms 转发给发起人；邮箱与简历仅用于核实身份，不会公开；我们可能会回信确认。你也可以选择匿名联署。
+              <span>Submissions are delivered to the organizers through Web3Forms. Your email and CV are used only for verification and never published; we may write back to confirm. You can also sign anonymously.</span>
             </li>
             <li>
               <strong>修改与撤回</strong>
-              如需更新信息或撤回联署，用同一邮箱来信告知即可。
-              <span>To update your entry or withdraw your signature, email us from the same address.</span>
+              如需更新信息或撤回联署，用同一邮箱再提交一次表单并说明即可。
+              <span>To update your entry or withdraw your signature, submit the form again with the same email and tell us.</span>
             </li>
             <li>
               <strong>修改建议</strong>
@@ -70,7 +69,7 @@
 
         <div class="steps">
           <div class="step active" data-step="1">1. 填写信息 Info</div>
-          <div class="step" data-step="2">2. 发送邮件 Send</div>
+          <div class="step" data-step="2">2. 完成 Done</div>
         </div>
 
         <form id="sign-form" data-version="v1.0">
@@ -106,6 +105,12 @@
           </div>
 
           <div class="field">
+            <label for="email">邮箱 Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" required maxlength="160" autocomplete="email" placeholder="建议使用机构邮箱 / Institutional email preferred">
+            <p class="hint">不会公开，仅用于核实身份与回复。Never published; used only to verify and reply.</p>
+          </div>
+
+          <div class="field">
             <label for="position">
               身份 / 职位 Position
               <span class="req" data-show-in="sign">*</span>
@@ -132,7 +137,7 @@
               <span class="optional" data-show-in="suggest" hidden>可选 optional</span>
             </label>
             <textarea id="resume" name="resume" rows="3" required maxlength="2000" placeholder="个人主页、Google Scholar 或简历链接，也可以写一段简短的个人简介。Homepage, Google Scholar, or a link to your CV, or a short bio."></textarea>
-            <p class="hint">仅用于核实身份，不会公开；也可以在发送邮件时附上简历 PDF。Used only to verify your identity and never published. You can also attach a PDF to the email.</p>
+            <p class="hint">仅用于核实身份，不会公开。可以把简历 PDF 上传到网盘或个人主页后粘贴链接。Used only to verify your identity and never published. To share a PDF, paste a link to it.</p>
           </div>
 
           <div class="field">
@@ -176,52 +181,21 @@
             </span>
           </label>
 
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <p class="form-error" id="form-error" role="alert" hidden></p>
           <div class="actions">
-            <button class="btn btn-primary" type="submit">生成邮件 Compose email</button>
+            <button class="btn btn-primary" type="submit" id="submit-btn">提交 Submit</button>
             <a class="btn btn-ghost" href="./">返回声明 Back</a>
           </div>
         </form>
 
         <section class="send-step" id="send-step" aria-labelledby="send-title" hidden>
-          <h2 id="send-title" tabindex="-1">最后一步：从你的邮箱发送 <span class="title-en">Last step: send it from your mailbox</span></h2>
-          <p class="hint">
-            建议使用机构邮箱发送，便于我们核实身份；如需附上简历 PDF，请在发送前添加附件。
-            An institutional address helps us verify your signature. To include a CV, attach it before sending.
-          </p>
-
-          <div class="mail-card">
-            <div class="mail-row">
-              <span class="mail-key">收件人 To</span>
-              <span class="mail-val" id="mail-to">kunlunz097@gmail.com</span>
-              <button class="copy-btn" type="button" data-copy="mail-to">复制 Copy</button>
-            </div>
-            <div class="mail-row">
-              <span class="mail-key">主题 Subject</span>
-              <span class="mail-val" id="mail-subject"></span>
-              <button class="copy-btn" type="button" data-copy="mail-subject">复制 Copy</button>
-            </div>
-            <div class="mail-row mail-row-body">
-              <span class="mail-key">正文 Body</span>
-              <button class="copy-btn" type="button" data-copy="mail-body">复制 Copy</button>
-              <pre class="mail-body" id="mail-body"></pre>
-            </div>
-          </div>
-
+          <h2 id="send-title" tabindex="-1">已提交，谢谢！ <span class="title-en">Submitted. Thank you!</span></h2>
+          <p class="lede" id="done-text"></p>
           <div class="actions">
-            <a class="btn btn-primary" id="send-mailto" href="mailto:kunlunz097@gmail.com">用邮件客户端发送 Mail app</a>
-            <a class="btn btn-ghost" id="send-gmail" href="https://mail.google.com/" target="_blank" rel="noopener noreferrer">用 Gmail 发送</a>
-            <a class="btn btn-ghost" id="send-outlook" href="https://outlook.office.com/" target="_blank" rel="noopener noreferrer">用 Outlook 发送</a>
-          </div>
-          <p class="hint" id="long-note" hidden>
-            正文较长，部分邮件客户端可能无法完整带入；如有缺失，请用“复制”按钮粘贴正文。
-            The message is long and some mail apps may cut it off; if so, paste the body with the Copy button.
-          </p>
-          <p class="hint">
-            如果以上按钮都无法打开邮箱，请复制收件人、主题与正文，在任意邮箱中手动发送。
-            If none of the buttons work, copy the address, subject, and body into any email client.
-          </p>
-          <div class="actions">
-            <button class="btn btn-ghost" type="button" id="edit-again">← 返回修改 Edit</button>
+            <a class="btn btn-primary" href="./#list">查看联署名单 Signatories</a>
+            <a class="btn btn-ghost" href="./">返回声明 Back</a>
           </div>
         </section>
       </section>
@@ -230,9 +204,8 @@
     <footer class="footer">
       <p>Joint Statement on Quick Research · “快”科研联合声明</p>
       <p>
-        如有问题或建议，可邮件联系 /
-        For inquiries or suggestions, please email
-        <a href="mailto:kunlunz097@gmail.com">kunlunz097@gmail.com</a>
+        如有问题或建议，请通过<a href="sign.html?mode=suggest">建议表单</a>联系 /
+        For inquiries or suggestions, please use the <a href="sign.html?mode=suggest">suggestion form</a>
       </p>
     </footer>
   </div>

@@ -7,17 +7,17 @@ Source for <https://quickresearch.github.io>: a bilingual (中文 / English) sta
 | 文件 File | 内容 Contents |
 | --- | --- |
 | `index.html` | 声明正文（中 / 英）、延伸阅读与联署名单 · Statement (zh / en), further reading, signatory list |
-| `sign.html` | 联署与建议页：生成一封发往联络邮箱的邮件 · Sign & suggest page that composes an email |
+| `sign.html` | 联署与建议表单（经 Web3Forms 发送）· Sign & suggest form, delivered via Web3Forms |
 | `static/signatories.js` | 联署名单数据 · Signatory data |
 | `static/main.js` | 语言切换与名单渲染 · Language tabs and list rendering |
-| `static/sign.js` | 表单与邮件生成 · Form and email composition |
+| `static/sign.js` | 表单校验与提交 · Form validation and submission |
 | `static/style.css` | 样式 · Styles |
 
 ## 联署如何运作 How signing works
 
-本站是纯静态网站，不收集任何数据。访客在 `sign.html` 填写姓名、单位、身份、简历与建议后，页面生成一封邮件（主题以 `[Quick Research]` 开头），由访客从自己的邮箱发送至 kunlunz097@gmail.com。发件邮箱本身即可用于核实身份。
+`sign.html` 把表单提交给 [Web3Forms](https://web3forms.com)，由它转发到发起人的邮箱；页面里只有 access key，不会暴露邮箱地址。首次使用：在 web3forms.com 输入接收邮箱获取 access key，填入 `static/sign.js` 的 `ACCESS_KEY`。
 
-The site is fully static and collects nothing. `sign.html` turns the form (name, institute, position, CV, suggestions) into an email whose subject starts with `[Quick Research]`, which the visitor sends from their own mailbox to kunlunz097@gmail.com. The sender address doubles as identity verification.
+`sign.html` posts the form to [Web3Forms](https://web3forms.com), which forwards it to the organizers' inbox. The page holds only an access key, never the address. Setup: get an access key at web3forms.com and put it in `ACCESS_KEY` in `static/sign.js`.
 
 ## 添加联署者 Adding a signatory
 
@@ -45,11 +45,9 @@ window.QR_SIGNATORIES = [
 - 发布新版本时，更新两处文末的版本行（`doc-meta`）以及 `sign.html` 中表单的 `data-version`。
   When releasing a new version, update the `doc-meta` line at the end of both versions and the form's `data-version` in `sign.html`.
 
-## 更换联络邮箱 Changing the contact email
+## 更换接收邮箱 Changing the inbox
 
-邮箱出现在 `static/sign.js`（`TO`）、`sign.html`（说明文字与收件人）和两个页面的页脚中。
-
-The address appears in `static/sign.js` (`TO`), in `sign.html` (instructions and recipient), and in both page footers.
+为新邮箱申请一个 Web3Forms access key，替换 `static/sign.js` 中的 `ACCESS_KEY`。 Get a Web3Forms key for the new inbox and replace `ACCESS_KEY` in `static/sign.js`.
 
 ## 本地预览 Local preview
 
