@@ -15,7 +15,7 @@ Source for <https://quickresearch.github.io>: a bilingual (中文 / English) sta
 
 ## 联署如何运作 How signing works
 
-`sign.html` 把表单提交给 [Web3Forms](https://web3forms.com)，由它转发到发起人的邮箱；页面里只有 access key，不会暴露邮箱地址。首次使用：在 web3forms.com 输入接收邮箱获取 access key，填入 `static/sign.js` 的 `ACCESS_KEY`。
+`sign.html` 把表单提交给 [Web3Forms](https://web3forms.com)，由它转发到发起人的邮箱；页面里只有 access key，不会暴露邮箱地址。未配置 key 时，会改为打开访客的邮件 App（收件地址在 `static/sign.js` 的 `INBOX` 中以字符编码保存，不以明文出现）。首次使用：在 web3forms.com 输入接收邮箱获取 access key，填入 `static/sign.js` 的 `ACCESS_KEY`。
 
 `sign.html` posts the form to [Web3Forms](https://web3forms.com), which forwards it to the organizers' inbox. The page holds only an access key, never the address. Setup: get an access key at web3forms.com and put it in `ACCESS_KEY` in `static/sign.js`.
 

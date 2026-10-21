@@ -5,6 +5,10 @@
   // Web3Forms access key (https://web3forms.com). It identifies the inbox without revealing the address.
   const ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
   const ENDPOINT = "https://api.web3forms.com/submit";
+  // Without a key, fall back to opening the visitor's mail app. The address is assembled
+  // here at click time so it never appears on the page or as plain text in the source.
+  const INBOX = [107, 117, 110, 108, 117, 110, 122, 48, 57, 55, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
+  const hasKey = () => ACCESS_KEY && !ACCESS_KEY.startsWith("YOUR_");
 
   const $ = (id) => document.getElementById(id);
   const form = $("sign-form");
@@ -115,12 +119,11 @@
     if (!form.reportValidity()) return;
     // Bots fill the hidden checkbox; people never see it.
     if (form.elements.botcheck.checked) return;
-    if (!ACCESS_KEY || ACCESS_KEY.startsWith("YOUR_")) {
-      showError("提交功能尚未配置，请稍后再试。The form is not configured yet. Please try again later.");
+    const { data, signing, anonymous } = payload();
+    if (!hasKey()) {
+      openMail(data);
       return;
     }
-
-    const { data, signing, anonymous } = payload();
     const label = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = "提交中… Sending…";
@@ -148,6 +151,35 @@
     sendStep.hidden = false;
     setStep(2);
     $("send-title").focus();
+  });
+
+  function openMail(data) {
+    const to = String.fromCharCode(...INBOX);
+    const skip = new Set(["access_key", "subject", "from_name"]);
+    const body = Object.entries(data)
+      .filter(([key]) => !skip.has(key))
+      .map(([key, value]) => {
+        const label = key === "email" ? "邮箱 Email" : key;
+        return String(value).includes("\n") ? `${label}:\n${value}\n` : `${label}: ${value}`;
+      })
+      .join("\n");
+    const su = encodeURIComponent(data.subject);
+    const mailto = `mailto:${to}?subject=${su}&body=${encodeURIComponent(body.replace(/\n/g, "\r\n"))}`;
+    $("send-mailto").href = mailto;
+    $("send-gmail").href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${su}&body=${encodeURIComponent(body)}`;
+    $("send-outlook").href = `https://outlook.office.com/mail/deeplink/compose?to=${encodeURIComponent(to)}&subject=${su}&body=${encodeURIComponent(body)}`;
+    form.hidden = true;
+    $("mail-step").hidden = false;
+    setStep(2);
+    $("mail-title").focus();
+    window.location.href = mailto;
+  }
+
+  $("edit-again").addEventListener("click", () => {
+    $("mail-step").hidden = true;
+    form.hidden = false;
+    setStep(1);
+    fields.name.focus();
   });
 
   if (new URLSearchParams(window.location.search).get("mode") === "suggest") {
